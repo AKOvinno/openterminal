@@ -1,0 +1,56 @@
+<% layout("/layouts/boilerplate") %>
+<div class="home text-center py-5" style="background-color: white">
+  <img
+    src="/img/openterminal-logo.png"
+    alt="Open Terminal Logo"
+    class="mb-3 logo"
+  />
+  <h1 class="display-4 mb-3">Welcome to OpenTerminal</h1>
+  <p class="lead mx-auto" style="max-width: 700px">
+    Your gateway to the latest insights, tutorials, and discussions in
+    technology. Dive deep into code, trends, and tech culture with our curated
+    articles.
+  </p>
+  <a href="#explore-posts" class="btn btn-dark mt-4">Explore Posts</a>
+</div>
+<hr />
+<h1 id="explore-posts">Explore Posts</h1>
+<div class="mt-3">
+  <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
+    <% for(let listing of allListings) { %>
+    <a href="/listings/<%= listing.id %>" class="listing-link">
+      <div class="card col listing-card">
+        <img
+          src="<%= listing.image.url %>"
+          class="card-img-top"
+          alt="listing_img"
+          style="height: 15rem; width: 10rem"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <div class="card-owner">
+            <p class="card-text">
+              <i class="fa-solid fa-globe"></i>&nbsp;&nbsp;<%=
+              listing.owner.username %>
+            </p>
+          </div>
+          <h5 class="card-title">
+            <b><%= listing.title %></b>
+          </h5>
+          <p class="card-text" style="text-align: justify">
+            <%= truncate(listing.description) %>
+          </p>
+        </div>
+      </div>
+    </a>
+    <% } %> <% if(allListings.length === 0) { %>
+    <h1>Found Nothing!</h1>
+    <% } %>
+  </div>
+</div>
+<script>
+  function truncate(text, words) {
+    let wordsArray = text.split(" ");
+    return wordsArray.slice(0, words).join(" ") + "...";
+  }
+</script>

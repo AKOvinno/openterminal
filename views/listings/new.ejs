@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h3>Create a New Article</h3>
+    <form
+      method="POST"
+      action="/listings"
+      class="needs-validation"
+      novalidate
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          name="listing[title]"
+          placeholder="Add a catchy title"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Title looks catchy</div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Content</label>
+        <textarea
+          name="listing[description]"
+          placeholder="Write Content"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Please write your content</div>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input
+          name="listing[image]"
+          type="file"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">You have to upload an image</div>
+      </div>
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <input
+          name="listing[category]"
+          placeholder="Add a category"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Category looks valid</div>
+      </div>
+      <button class="btn btn-primary add-btn mt-2 mb-3">Add</button>
+    </form>
+  </div>
+</div>
